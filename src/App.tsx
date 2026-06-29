@@ -8,7 +8,7 @@ import { SavingsView } from './components/SavingsView';
 import { ProfileSetupView } from './components/ProfileSetupView';
 import { ProfileSelectView } from './components/ProfileSelectView';
 import { SplashView } from './components/SplashView';
-import { PieChart, Wallet, Receipt, CreditCard, Target, Moon, Sun } from 'lucide-react';
+import { PieChart, Wallet, Receipt, CreditCard, Target } from 'lucide-react';
 import { cn } from './lib/utils';
 import { AnimatePresence } from 'motion/react';
 import * as motion from 'motion/react-client';
@@ -21,19 +21,10 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
   const [isCreatingProfile, setIsCreatingProfile] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
-  const [darkMode, setDarkMode] = useState(() => {
-    const saved = localStorage.getItem('ios_app_dark_mode');
-    return saved ? JSON.parse(saved) : true; // Default dark mode to true for new features
-  });
 
   useEffect(() => {
-    localStorage.setItem('ios_app_dark_mode', JSON.stringify(darkMode));
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [darkMode]);
+    document.documentElement.classList.add('dark');
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -170,9 +161,9 @@ export default function App() {
   }
 
   return (
-    <div className={cn("min-h-screen flex justify-center text-gray-900 dark:text-gray-100", darkMode ? "bg-[#0a0a0a]" : "bg-slate-50 selection:bg-blue-100")}>
+    <div className={cn("min-h-screen flex justify-center text-gray-900 dark:text-gray-100 bg-[#0a0a0a]")}>
       {/* Mobile constraint container for "iOS App" feel */}
-      <div className={cn("w-full sm:max-w-md h-screen relative flex flex-col sm:border-x overflow-hidden sm:shadow-2xl font-sans", darkMode ? "bg-[#0a0a0a] border-[#1f1f1f]" : "bg-white border-gray-200")}>
+      <div className={cn("w-full sm:max-w-md h-screen relative flex flex-col sm:border-x overflow-hidden sm:shadow-2xl font-sans bg-[#0a0a0a] border-[#1f1f1f]")}>
         
         {!showSplash && (
           <div className="w-full flex items-center justify-between px-6 pt-6 pb-2 z-50 shrink-0 bg-transparent">
@@ -192,14 +183,6 @@ export default function App() {
                 </button>
               </div>
             ) : <div />}
-            
-            <button 
-              onClick={() => setDarkMode(!darkMode)}
-              className="p-2.5 bg-white dark:bg-[#121212] border border-gray-200 dark:border-[#1f1f1f] rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-[#1a1a1a] transition-colors active:scale-95 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              aria-label="Toggle Dark Mode"
-            >
-              {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
           </div>
         )}
 

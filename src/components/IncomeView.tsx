@@ -91,7 +91,7 @@ export function IncomeView({ incomes, currency = 'USD', onAdd, onRemove }: Incom
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
                   placeholder="0.00"
-                  className="w-full p-3 pl-8 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all dark:text-gray-100"
+                  className="w-full p-3 pl-8 bg-gray-50 dark:bg-[#1a1a1a] border border-gray-200 dark:border-[#3f3f46] rounded-xl outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all dark:text-gray-100"
                 />
               </div>
             </div>

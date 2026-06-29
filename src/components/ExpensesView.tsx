@@ -126,7 +126,7 @@ export function ExpensesView({ expenses, currency = 'USD', onAdd, onRemove, onUp
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="e.g. Rent, Groceries"
-                className="w-full p-3 bg-gray-50 dark:bg-gray-800 border-none rounded-xl outline-none focus:ring-2 focus:ring-blue-500 transition-shadow dark:text-gray-100"
+                className="w-full p-3 bg-gray-50 dark:bg-[#1a1a1a] border-none rounded-xl outline-none focus:ring-2 focus:ring-blue-500 transition-shadow dark:text-gray-100"
                 autoFocus
               />
             </div>

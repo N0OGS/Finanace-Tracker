@@ -13,10 +13,24 @@ interface DashboardViewProps {
   currency?: string;
 }
 
-const COLORS = ['#60a5fa', '#f87171', '#fb923c', '#facc15', '#a3e635', '#22d3ee', '#a78bfa', '#f472b6'];
+const COLORS = ['#3b82f6', '#ef4444', '#f97316', '#eab308', '#22c55e', '#0ea5e9', '#8b5cf6', '#ec4899'];
 
 export function DashboardView({ incomes, deductions, expenses, period, setPeriod, currency = 'USD' }: DashboardViewProps) {
   const finances = calculateFinances(incomes, deductions, expenses, period);
+
+  const CustomTooltip = ({ active, payload }: any) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-white dark:bg-[#1a1a1a] p-3 rounded-xl shadow-lg border border-gray-100 dark:border-[#272727]">
+          <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">{payload[0].name}</p>
+          <p className="text-lg font-bold" style={{ color: payload[0].payload.color || payload[0].color || payload[0].payload.fill }}>
+            {formatCurrency(payload[0].value, currency)}
+          </p>
+        </div>
+      );
+    }
+    return null;
+  };
 
   
   const chartData = [
@@ -49,7 +63,7 @@ export function DashboardView({ incomes, deductions, expenses, period, setPeriod
         </select>
       </div>
 
-      <div className="bg-gradient-to-br from-gray-900 to-black dark:from-[#111] dark:to-black border border-transparent dark:border-[#272727] rounded-[2rem] p-7 text-white shadow-xl space-y-5 relative overflow-hidden">
+      <div className="bg-gradient-to-br from-blue-600 to-indigo-700 dark:from-[#111] dark:to-black border border-transparent dark:border-[#272727] rounded-[2rem] p-7 text-white shadow-xl space-y-5 relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
           <div className="w-48 h-48 bg-white rounded-full blur-3xl absolute -top-10 -right-10" />
@@ -102,7 +116,7 @@ export function DashboardView({ incomes, deductions, expenses, period, setPeriod
                  </Pie>
                  <Tooltip 
                    formatter={(value: number) => formatCurrency(value, currency)}
-                   contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)', backgroundColor: '#fff', color: '#000' }}
+                   content={<CustomTooltip />}
                  />
                </PieChart>
              </ResponsiveContainer>

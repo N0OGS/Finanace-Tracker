@@ -94,7 +94,7 @@ export function TaxesView({ deductions, currency = 'USD', onAdd, onRemove }: Tax
               />
             </div>
             
-            <div className="flex bg-gray-100 dark:bg-gray-800 p-1 rounded-xl">
+            <div className="flex bg-gray-100 dark:bg-[#1a1a1a] p-1 rounded-xl">
               <button
                 onClick={() => setType('percentage')}
                 className={cn(
@@ -108,7 +108,7 @@ export function TaxesView({ deductions, currency = 'USD', onAdd, onRemove }: Tax
                 onClick={() => setType('fixed')}
                 className={cn(
                   "flex-1 py-2 text-sm font-medium rounded-lg transition-all",
-                  type === 'fixed' ? "bg-white dark:bg-gray-700 shadow-sm text-gray-900 dark:text-gray-100" : "text-gray-500 dark:text-gray-400"
+                  type === 'fixed' ? "bg-white dark:bg-[#272727] shadow-sm text-gray-900 dark:text-gray-100" : "text-gray-500 dark:text-gray-400"
                 )}
               >
                 Fixed Amount
@@ -128,7 +128,7 @@ export function TaxesView({ deductions, currency = 'USD', onAdd, onRemove }: Tax
                     onChange={(e) => setValue(e.target.value)}
                     placeholder="0.00"
                     className={cn(
-                      "w-full p-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all dark:text-gray-100",
+                      "w-full p-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-[#3f3f46] rounded-xl outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all dark:text-gray-100",
                       type === 'fixed' && "pl-7"
                     )}
                   />
