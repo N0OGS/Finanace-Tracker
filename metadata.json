@@ -1,0 +1,8 @@
+{
+  "name": "Income & Tax Tracker",
+  "description": "An iOS-style real-time gross/net income and tax withholding tracker.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
