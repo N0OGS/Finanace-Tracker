@@ -1,4 +1,4 @@
-
+Finance Tracker App Project, which tracks income deductions via tax and added expenses for financial literacy and everyday tracking needs
 
 This contains everything you need to run your app locally.
 
